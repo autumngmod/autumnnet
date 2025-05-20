@@ -13,9 +13,12 @@ function autumnnet.events:run(name, package)
     return print("[autumnnet] no listeners for message '" .. (name or "unknown message") .. "'")
   end
 
+  local id = package:getId()
+  local listenerById = listeners[id]
+
   -- "async" runtime
   local co = coroutine.create(function()
-    for _, listen in ipairs(listeners) do
+    for _, listen in pairs(listenerById and { id = listenerById } or listeners) do
       local content = listen(package)
 
       if (!content) then

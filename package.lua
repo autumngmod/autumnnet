@@ -27,15 +27,13 @@ function packageMt:getPayload()
   return self.payload
 end
 
-function packageMt:__index(key)
-  local data = rawget(self, key)
-
-  if data ~= nil then
-    return data
+function packageMt.__index(tbl, key)
+  local method = rawget(packageMt, key)
+  if method then
+    return method
   end
 
-  local payload = rawget(self, "payload")
-
+  local payload = rawget(tbl, "payload")
   return payload and payload[key]
 end
 
@@ -51,11 +49,11 @@ end
 ---@param name string
 ---@param sender Player
 function autumnnet.package:incoming(id, name, sender)
-  local side = SERVER and "client" or "server"
+  local side = SERVER and "server" or "client"
   -- reading package's contents
-  local isErr, payload = pcall(autumnnet.payload.read, autumnnet.payload, id, name, sender, side)
+  local ok, payload = pcall(autumnnet.payload.read, autumnnet.payload, id, name, sender, side)
 
-  if (isErr) then
+  if (not ok) then
     print("[autumnnet] unable to read payload '" .. (name or "unknown message") .. "' from " .. (IsValid(sender) and sender:SteamID() or "Console") .. ": " .. payload)
   end
 
@@ -68,7 +66,7 @@ end
 ---@param _len integer
 ---@param sender Player
 function autumnnet.package.read(_len, sender)
-  local id = net.ReadId()
+  local id = autumnnet.net.readId()
   local name = net.ReadString()
 
   autumnnet.package:incoming(id, name, sender)

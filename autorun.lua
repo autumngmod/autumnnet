@@ -36,11 +36,11 @@ end
 ---@param payload table<string, any>
 ---@param recipient? Player
 function autumnet.send(name, payload, recipient)
-  local isErr, err = pcall(autumnnet.payload.write, autumnnet.payload, name, payload, recipient, SERVER and "client" or "server")
+  local ok, err = pcall(autumnnet.payload.write, autumnnet.payload, name, payload, recipient, SERVER and "client" or "server")
 
-  if (isErr) then
+  if (not ok) then
     ---@diagnostic disable-next-line: need-check-nil
-    print("[autumnnet] unable to send message '" .. (name or "unknown message") "' to " .. (IsValid(recipient) and recipient:SteamID() or "Console") ":" .. err)
+    print("[autumnnet] unable to send message '" .. (name or "unknown message") .. "' to " .. (IsValid(recipient) and recipient:SteamID() or "Console") .. ":" .. err)
   end
 end
 
