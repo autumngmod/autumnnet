@@ -10,5 +10,5 @@ You can find the documentation in the [Wiki of this repository](https://github.c
 lib i autumngmod/autumnnet@0.1.0
 ```
 * From GitHub Releases
-  1. Download [latest minified file]()
+  1. Download [latest minified file](https://github.com/autumngmod/autumnnet/releases/latest/download/lib.lua)
   2. Save it in ``GarrysMod/garrysmod/lua/autorun``
