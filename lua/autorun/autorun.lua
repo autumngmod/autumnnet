@@ -4,7 +4,7 @@ autumnnet = {}
 ---@field [1] fun(): any Reader
 ---@field [2] fun(n: any) Writer
 
----@alias AutumnNet.Types "i8" | "i16" | "i32" | "u8" | "u16" | "u32" | "u64" | "string" | "data" | "data_uncomp" | "entity" | "player"
+---@alias AutumnNet.Types "i8" | "i16" | "i32" | "u8" | "u16" | "u32" | "u64" | "string" | "data" | "data_uncomp" | "entity" | "player" | "table"
 
 ---@type table<AutumnNet.Types, AutumnNet.Types.Callbacks>
 autumnnet.types = {
@@ -20,6 +20,7 @@ autumnnet.types = {
   data_uncomp = {function() return net.ReadData(net.ReadUInt(32)) end, function(n) net.WriteUInt(#n, 32) net.WriteData(n) end},
   entity = {function() return net.ReadEntity() end, function(n) net.WriteEntity(n) end},
   player = {function() return net.ReadPlayer() end, function(n) net.WritePlayer(n) end},
+  table = {function() return net.ReadTable() end, function(n) net.WriteTable(n) end}
 }
 
 -- incapsulation
