@@ -63,7 +63,7 @@ function autumnnet.sendAwait(name, payload, recipient, timeout)
 
   if (not ok) then
     ---@diagnostic disable-next-line: need-check-nil
-    print("[autumnnet] unable to send message '" .. (name or "unknown message") .. "' to " .. (IsValid(recipient) and recipient:SteamID() or "Console") ":" .. idOrErr)
+    print("[autumnnet] unable to send message '" .. (name or "unknown message") .. "' to " .. (IsValid(recipient) and recipient:SteamID() or "Console") .. ":" .. idOrErr)
   end
 
   local isReplied = false
