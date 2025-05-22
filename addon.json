@@ -1,0 +1,9 @@
+{
+  "$schema": "https://raw.githubusercontent.com/autumngmod/json/refs/heads/main/addon.scheme.json",
+  "name": "autumnnet",
+  "description": "High abstraction level network library for Garry's Mod ",
+  "authors": ["smokingplaya"],
+  "version": "0.1.0",
+  "githubRepo": "https://github.com/autumngmod/autumnnet",
+  "side": ["client", "server"]
+}
