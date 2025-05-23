@@ -38,6 +38,7 @@ end
 ---@param idOverride? string
 ---@return string Message's Id
 function autumnnet.payload:write(name, payload, recipient, side, idOverride)
+  net.Start("autumnnet")
   local id = autumnnet.net.writeId(idOverride)
   net.WriteString(name)
 
