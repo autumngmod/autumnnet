@@ -36,7 +36,7 @@ end
 ---@param name string
 ---@param payload table<string, any>
 ---@param recipient? Player
-function autumnet.send(name, payload, recipient)
+function autumnnet.send(name, payload, recipient)
   local ok, err = pcall(autumnnet.payload.write, autumnnet.payload, name, payload, recipient, SERVER and "client" or "server")
 
   if (not ok) then
